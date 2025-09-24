@@ -16,6 +16,11 @@ const LoginPage = () => {
         {currState}
         <img src={assets.arrow_icon} alt="" className='w-5 cursor-pointer' />
         </h2>
+        {currState === "Sign up" && (
+              <input type="text" className='p-2 border border-gray-500 rounded-md focus:outline-none' placeholder='Full Name' required/>
+          )}
+     
+
       </form>
 
     </div>
