@@ -36,6 +36,12 @@ const LoginPage = () => {
 
           </>
          )}
+
+         {currState === 'Sign up' && isDataSubmitted && (
+            <textarea  onChange={(e)=>setBio(e.target.value)} value={bio}
+             rows={4} className='p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500' placeholder='provide a short bio...' required></textarea>
+          )
+         }
       </form>
 
     </div>
