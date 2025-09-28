@@ -7,7 +7,17 @@ const LoginPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [bio, setBio] = useState("")
-  const [isDataSubmitted, setIsDataSubmitted] = useState(false)
+  const [isDataSubmitted, setIsDataSubmitted] = useState(false);
+
+  const onSubmitHandler = (event)=>{
+    event.preventDefault();
+
+    if (currState === 'Sign up' && !isDataSubmitted) {
+      setIsDataSubmitted(true)
+      return;
+    }
+
+  }
 
   return (
     <div className="min-h-screen bg-cover bg-center flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl">
