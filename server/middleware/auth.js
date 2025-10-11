@@ -1,10 +1,6 @@
 // moiddleware to protect router
 import User from "../models/User.js"
 import jwt from "jsonwebtoken";
-
-
-import User from "../models/User";
-
 export const protectRoute = async (req, res, next) => {
   try {
     const token = req.headers.token;
