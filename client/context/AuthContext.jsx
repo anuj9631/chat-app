@@ -1,5 +1,6 @@
 import { Children, createContext, useState } from "react";
 import axios from 'axios'
+import toast from "react-hot-toast";
 
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -12,8 +13,24 @@ const [authUser, setAuthUser] = useState(null);
 const [onlineUsers, setOnlineUsers] = useState([]);
 const [socket, setSocket] = useState(null);
 
+
+//check if user is authenticated and if so set the user data and cnnncet the socket
+
+const checkAuth = async () => {
+  try {
+    const {data} = await axios.get("/api/auth/chcek");
+    if(data.success){
+      setAuthUser(data.user)
+    }
+  } catch (error) {
+    toast.error(error.message)
+  }
+}
   const value = {
-    axios
+    axios,
+    authUser,
+    onlineUsers,
+    socket
   }
   return (
     
