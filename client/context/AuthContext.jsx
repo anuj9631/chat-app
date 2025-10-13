@@ -1,4 +1,4 @@
-import { Children, createContext, useState } from "react";
+import { Children, createContext, useEffect, useState } from "react";
 import axios from 'axios'
 import toast from "react-hot-toast";
 
@@ -26,6 +26,13 @@ const checkAuth = async () => {
     toast.error(error.message)
   }
 }
+
+useEffect(()=>{
+if(token){
+  axios.defaults.headers.common["token"] = token;
+}
+},[])
+
   const value = {
     axios,
     authUser,
