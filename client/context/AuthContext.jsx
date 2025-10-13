@@ -27,10 +27,18 @@ const checkAuth = async () => {
   }
 }
 
+//connect socket function to handle socket connection and online user updates
+const connectSocket = (userData)=>{
+  if(!userData || socket?.connected ) return;
+  const newSocket = 
+}
+
+
 useEffect(()=>{
 if(token){
   axios.defaults.headers.common["token"] = token;
 }
+checkAuth()
 },[])
 
   const value = {
