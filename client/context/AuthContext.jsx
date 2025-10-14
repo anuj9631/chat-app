@@ -22,6 +22,7 @@ const checkAuth = async () => {
     const {data} = await axios.get("/api/auth/chcek");
     if(data.success){
       setAuthUser(data.user)
+      connectSocket(data.user)
     }
   } catch (error) {
     toast.error(error.message)
