@@ -29,6 +29,28 @@ const checkAuth = async () => {
   }
 }
 
+
+//Login function to handle user authentication and socket connection
+const login = async (state, credential)=>{
+  try {
+    const {data} = await axios.post(`/api/auth/${state}`, credential);
+    if(data.success){
+      setAuthUser(data.userData)
+      connectSocket(data.userData)
+      axios.defaults.headers.common["token"] = data.token;
+      setToken(data.token)
+      localStorage.setItem("toekn", data.token)
+      toast.success(data.message)
+    }else{
+      toast.error(data.message)
+    }
+  } catch (error) {
+    toast.error(error.message)
+  }
+}
+
+
+
 //connect socket function to handle socket connection and online user updates
 const connectSocket = (userData)=>{
   if(!userData || socket?.connected ) return;
