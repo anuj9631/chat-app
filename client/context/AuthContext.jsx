@@ -49,6 +49,17 @@ const login = async (state, credential)=>{
   }
 }
 
+// Logout function to handle user logout and socket disconnection
+
+const logout = async () => {
+  localStorage.removeItem("token");
+  setToken(null);
+  setAuthUser(null);
+  setOnlineUsers([]);
+  axios.defaults.headers.common["token"] = null;
+  toast.success("Logged out successfully")
+  socket.disconnect();
+}
 
 
 //connect socket function to handle socket connection and online user updates
