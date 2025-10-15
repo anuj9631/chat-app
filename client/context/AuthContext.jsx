@@ -74,6 +74,8 @@ const updateProfile = async (body) => {
   }
 }
 
+
+
 //connect socket function to handle socket connection and online user updates
 const connectSocket = (userData)=>{
   if(!userData || socket?.connected ) return;
@@ -102,7 +104,11 @@ checkAuth()
     axios,
     authUser,
     onlineUsers,
-    socket
+    socket,
+    login,
+    logout,
+    updateProfile,
+
   }
   return (
     
