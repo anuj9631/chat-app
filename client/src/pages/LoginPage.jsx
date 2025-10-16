@@ -12,20 +12,21 @@ const LoginPage = () => {
 
   const { login } = useContext(AuthContext);
 
-  const onSubmitHandler = async (event) => {
+  const onSubmitHandler = (event) => {
     event.preventDefault();
 
     if (currState === "Sign up" && !isDataSubmitted) {
       setIsDataSubmitted(true);
       return;
     }
+    login(currState === "Sign up" ? 'signup' : 'login', {fullName, email, password, bio})
+  }
 
-    if (currState === "Login") {
-      await login("login", { email, password });
-    } else if (currState === "Sign up" && isDataSubmitted) {
-      await login("signup", { fullName, email, password, bio });
-    }
-  };
+    // if (currState === "Login") {
+    //   await login("login", { email, password });
+    // } else if (currState === "Sign up" && isDataSubmitted) {
+    //   await login("signup", { fullName, email, password, bio });
+    // }
 
   return (
     <div className="min-h-screen bg-cover bg-center flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl">
