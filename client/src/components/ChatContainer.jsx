@@ -3,6 +3,7 @@ import assets, { messagesDummyData } from '../assets/assets'
 import { formatMessageTime } from '../lib/utils'
 import { ChatContext } from '../../context/ChatContext'
 import { AuthContext } from '../../context/AuthContext'
+import toast from 'react-hot-toast'
 
 const ChatContainer = () => {
 
@@ -20,6 +21,21 @@ const ChatContainer = () => {
     await sendMessage({text: input.trim()});
     setInput("")
   }
+//Handle sending an image 
+const handleSendImage = async (e) => {
+  const file = e.target.files[0];
+  if(!file || !file.type.startsWith("image/")){
+    toast.error("Select and image file")
+    return
+  }
+  const reader = new FileReader();
+   reader.onloadend = async()=>{
+    await sendMessage ({image: reader.result})
+    e.target.value = " "
+   }
+   reader.readAsDataURL(file)
+}
+
 
   useEffect(()=>{
     if(scrollEnd.current){
@@ -63,7 +79,7 @@ const ChatContainer = () => {
                onChange={(e)=> setInput(e.target.value)} value={input}onKeyDown={(e) => e.key === "Enter" ? handleSendMessage(e) : null}
                
                type="text" placeholder='Send a Message' className='flex-1 text-sm p-3 border-none rounded-lg outline-none text-white placeholder-gray-400 '/>
-               <input type="file" id='image' accept='image/jpg, image/jpeg' hidden/>
+               <input onChange={handleSendImage} type="file" id='image' accept='image/jpg, image/jpeg' hidden/>
                <label htmlFor="image">
                 <img src={assets.gallery_icon} alt="" className='w-5 mr-2 cursor-pointer' />
                </label>
