@@ -27,30 +27,7 @@ Backend	Node.js, Express.js, Socket.io
 Database	MongoDB (Mongoose)
 Authentication	JWT (JSON Web Token)
 Other Tools	React Hot Toast, Multer (for file upload), dotenv
-📁 Folder Structure
-chat-app/
-│
-├── client/                # React frontend
-│   ├── src/
-│   │   ├── components/    # Reusable React components
-│   │   ├── context/       # AuthContext & ChatContext
-│   │   ├── assets/        # Images, icons, dummy data
-│   │   ├── lib/           # Utility functions
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   └── ...
-│   └── package.json
-│
-├── server/                # Express backend
-│   ├── controllers/       # All route logic
-│   ├── models/            # Mongoose schemas
-│   ├── routes/            # Express routes
-│   ├── middleware/        # Auth middleware
-│   ├── server.js          # Main entry file
-│   ├── socket.js          # Socket.io configuration
-│   └── .env
-│
-└── README.md
+
 
 ⚙️ Installation and Setup
 1️⃣ Clone the Repository
